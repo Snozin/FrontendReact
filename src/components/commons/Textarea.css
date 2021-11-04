@@ -1,0 +1,11 @@
+.textarea-input {
+  appearance: none;
+  border: none;
+  box-shadow: none;
+  font: inherit;
+  min-height: 96px;
+  outline: none;
+  overflow: auto;
+  resize: none;
+  width: 100%;
+}
