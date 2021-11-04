@@ -1,13 +1,15 @@
-import { getAdverts } from "../services/dataService"
+import { getAdverts } from "../../services/dataService"
 import { useEffect, useState } from "react"
 import classNames from "classnames"
+
+import Layout from "../../layout/Layout"
 
 // import "./AdvertsPage.css"
 /**
  * Module CSS genera una clase con un hash único que evita conflictos.
  * Para usarlo, lo importamos como un objeto y se pasa la propiedad del objeto
  * importado directamente al atributo className de react.
- * 
+ *
  * También puede combinarse con el la libreria classnames para generar clases
  * condicionales
  */
@@ -25,15 +27,18 @@ const AdvertsPage = () => {
   return (
     // usando classNames para definir clases condicionalmente
     // <div className={classNames("advertsPage", { secondClass: adverts.length })}>
-
-    <div className={classNames(styles.advertsPage) }>
-      <ul>
-        {adverts.map((advert) => (
-          // Ejemplo simple de module css
-          <li className={styles.item} key={advert.id}>{advert.content}</li>
-        ))}
-      </ul>
-    </div>
+    <Layout title="Cosas de anunciar">
+      <div className={classNames(styles.advertsPage)}>
+        <ul>
+          {adverts.map((advert) => (
+            // Ejemplo simple de module css
+            <li className={styles.item} key={advert.id}>
+              {advert.content}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Layout>
   )
 }
 

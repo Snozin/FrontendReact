@@ -1,12 +1,12 @@
 import './App.css'
 import AdvertsPage from './components/adverts/AdvertsPage'
-import Button from './components/commons/Button';
+// import Button from './components/commons/Button';
 
 function App() {
   return (
     <>
-    <Button/>
-    <Button variant='primary'/>
+    {/* <Button disabled> No toy</Button>
+    <Button variant='primary'>Si toy</Button> */}
       <AdvertsPage />
     </>
   );

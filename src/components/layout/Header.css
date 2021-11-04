@@ -1,0 +1,31 @@
+.header {
+  align-items: center;
+  display: flex;
+}
+
+.header-logo {
+  align-items: center;
+  background-color: transparent;
+  border-radius: 9999px;
+  color: rgba(29, 161, 242, 1);
+  display: inline-flex;
+  height: 48px;
+  justify-content: center;
+  transition: background-color 0.2s;
+  width: 48px;
+}
+
+.header-logo:hover {
+  background-color: rgba(29, 161, 242, 0.1);
+}
+
+.header-nav {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.header-button {
+  width: 144px;
+  margin-left: 10px;
+}

@@ -1,0 +1,35 @@
+.layout-header {
+  background-color: white;
+  border-bottom-width: 1px;
+  height: 64px;
+  position: sticky;
+  top: 0;
+}
+
+.layout-main {
+  border-left-width: 1px;
+  border-right-width: 1px;
+  margin: 0 auto;
+  max-width: 660px;
+  min-height: calc(100vh - 128px);
+}
+
+.layout-title {
+  align-items: center;
+  border-bottom-width: 1px;
+  display: flex;
+  height: 52px;
+  padding: 0 15px;
+}
+
+.layout-footer {
+  align-items: center;
+  border-top-width: 1px;
+  display: flex;
+  height: 64px;
+}
+
+.layout-header,
+.layout-footer {
+  padding: 0 15px;
+}
