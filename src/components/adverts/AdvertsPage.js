@@ -12,7 +12,7 @@ import classNames from "classnames"
  * condicionales
  */
 import styles from "./AdvertsPage.module.css"
-console.log(styles)
+// console.log(styles)
 
 const AdvertsPage = () => {
   const [adverts, setAdverts] = useState([])
