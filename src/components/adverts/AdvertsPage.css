@@ -1,0 +1,12 @@
+* {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding-left: 15px;
+}
+
+.advertsPage {
+  background-color: lightblue;
+}
