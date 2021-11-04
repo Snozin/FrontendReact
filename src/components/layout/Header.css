@@ -25,6 +25,10 @@
   justify-content: flex-end;
 }
 
+.header-nav .current {
+  color: red;
+}
+
 .header-button {
   width: 144px;
   margin-left: 10px;
