@@ -8,6 +8,11 @@ const LoginPage = ({ onLogin }) => {
   const [formValues, setFormValues] = useState({ username: "", password: "" })
   // const [username, setUsername] = useState("")
   // const [password, setPassword] = useState("")
+  // Seteamos el valor inicial a null porque si algo es null react no renderiza
+  const [error, setError] = useState(null)
+  const resetError = () => setError(null)
+
+  const [isLoading, setIsLoading] = useState(false)
 
   /**
    * Refactor para utilizar un único useState con un objeto que gestiona los
@@ -45,11 +50,15 @@ const LoginPage = ({ onLogin }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    setIsLoading(true)
+    resetError()
     try {
       await login(formValues)
       onLogin()
     } catch (error) {
-      console.warn(error)
+      setError(error)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -72,11 +81,17 @@ const LoginPage = ({ onLogin }) => {
         <Button
           type="submit"
           variant="primary"
-          disabled={!formValues.username || !formValues.password}
+          disabled={isLoading || !formValues.username || !formValues.password}
         >
           Log in
         </Button>
       </form>
+      {/* Renderizado condicional solo si error existe */}
+      {error && (
+        <div onClick={resetError} className="loginPage-error">
+          {error.message}
+        </div>
+      )}
     </div>
   )
 }
