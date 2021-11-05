@@ -68,6 +68,7 @@ const LoginPage = ({ onLogin }) => {
       <h1 className="loginPage-title">Login molón</h1>
       <form onSubmit={handleSubmit}>
         <input
+          autoFocus
           type="text"
           name="username"
           value={formValues.username}
