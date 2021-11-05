@@ -8,6 +8,8 @@ import {
 import { LoginPage } from "./components/auth"
 import { logout } from "./components/auth/authDataService"
 
+import { AuthContextProvider } from "./components/auth/context"
+
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged)
   const handleLogin = () => setIsLogged(true)
@@ -16,16 +18,18 @@ function App({ isInitiallyLogged }) {
     setIsLogged(false)
   }
   return (
-    <>
-      {isLogged ? (
-        <AdvertsPage isLogged onLogout={handleLogout}/>
-      ) : (
-        <LoginPage onLogin={handleLogin} />
-      )}
+    <AuthContextProvider value={{ handleLogin, handleLogout, isLogged }}>
+      <>
+        {isLogged ? (
+          <AdvertsPage />
+        ) : (
+          <LoginPage />
+        )}
 
-      {/* <NewAdvertPage />
+        {/* <NewAdvertPage />
       <AdvertDetailPage /> */}
-    </>
+      </>
+    </AuthContextProvider>
   )
 }
 

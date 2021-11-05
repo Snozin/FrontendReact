@@ -3,6 +3,7 @@ import Button from "../../commons/Button"
 import "./LoginPage.css"
 
 import { login } from "../authDataService"
+import { AuthContextConsumer } from "../context"
 
 const LoginPage = ({ onLogin }) => {
   const [formValues, setFormValues] = useState({ username: "", password: "" })
@@ -54,11 +55,11 @@ const LoginPage = ({ onLogin }) => {
     resetError()
     try {
       await login(formValues)
+      setIsLoading(false)
       onLogin()
     } catch (error) {
-      setError(error)
-    } finally {
       setIsLoading(false)
+      setError(error)
     }
   }
 
@@ -96,4 +97,13 @@ const LoginPage = ({ onLogin }) => {
   )
 }
 
-export default LoginPage
+// export default LoginPage
+
+// Uso del contexto sin hook de useContext
+const ConnectedLogin = () => (
+  <AuthContextConsumer>
+    {(auth) => <LoginPage onLogin={auth.handleLogin} />}
+  </AuthContextConsumer>
+)
+
+export default ConnectedLogin

@@ -1,11 +1,16 @@
 import classNames from "classnames"
 import Button from "../commons/Button"
 
-import "./Header.css"
 // Forma fancy de importar los SVG como un componente react
 import { ReactComponent as Icon } from "../../assets/twitter.svg"
+import { useContext } from "react"
+import "./Header.css"
 
-const Header = ({ className, isLogged, onLogout }) => {
+import AuthContext from "../auth/context"
+
+const Header = ({ className }) => {
+  // Ejemplo de uso del context consumer
+  const { isLogged, handleLogout } = useContext(AuthContext)
   return (
     <header className={classNames("header", className)}>
       <div className="header-logo">
@@ -14,7 +19,7 @@ const Header = ({ className, isLogged, onLogout }) => {
       </div>
       <nav className="header-nav">
         {isLogged ? (
-          <Button className="header-button" onClick={onLogout}>
+          <Button className="header-button" onClick={handleLogout}>
             Log Out
           </Button>
         ) : (

@@ -2,7 +2,6 @@ import Header from "./Header"
 import './Layout.css'
 
 const Layout = ({ children, title, ...props }) => {
-  console.log(props)
   return (
     <div className="layout">
       <Header className="layout-header bordered" {...props} />
