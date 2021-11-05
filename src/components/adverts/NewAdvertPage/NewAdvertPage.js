@@ -1,7 +1,7 @@
 import Layout from "../../layout/Layout"
 
 
-const NewAdverPage = ()=> {
+const NewAdvertPage = ()=> {
   return (
     <Layout title='Nuevo anuncio'>
       <div>Página de nuevo anuncio</div>
@@ -9,4 +9,4 @@ const NewAdverPage = ()=> {
   )
 }
 
-export default NewAdverPage
+export default NewAdvertPage
