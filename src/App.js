@@ -7,8 +7,8 @@ import {
 } from "./components/adverts/"
 import { LoginPage } from "./components/auth"
 
-function App() {
-  const [isLogged, setIsLogged] = useState(false)
+function App({isInitiallyLogged}) {
+  const [isLogged, setIsLogged] = useState(isInitiallyLogged)
   const handleLogin = () => setIsLogged(true)
   return (
     <>
