@@ -4,7 +4,7 @@ import "./LoginPage.css"
 
 import { login } from "../authDataService"
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }) => {
   const [formValues, setFormValues] = useState({ username: "", password: "" })
   // const [username, setUsername] = useState("")
   // const [password, setPassword] = useState("")
@@ -43,18 +43,20 @@ const LoginPage = () => {
     }))
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    // console.log(event)
-    login(formValues)
+    try {
+      await login(formValues)
+      onLogin()
+    } catch (error) {
+      console.warn(error)
+    }
   }
- 
+
   return (
     <div className="loginPage">
       <h1 className="loginPage-title">Login molón</h1>
-      <form
-        onSubmit={handleSubmit}
-      >
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="username"

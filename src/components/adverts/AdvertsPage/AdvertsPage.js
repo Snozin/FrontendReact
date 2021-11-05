@@ -16,7 +16,7 @@ import Layout from "../../layout/Layout"
 import styles from "./AdvertsPage.module.css"
 // console.log(styles)
 
-const AdvertsPage = () => {
+const AdvertsPage = (props) => {
   const [adverts, setAdverts] = useState([])
   useEffect(() => {
     // Forma equivalente a la de abajo.
@@ -27,7 +27,7 @@ const AdvertsPage = () => {
   return (
     // usando classNames para definir clases condicionalmente
     // <div className={classNames("advertsPage", { secondClass: adverts.length })}>
-    <Layout title="Cosas de anunciar">
+    <Layout title="Cosas de anunciar" {...props}>
       <div className={classNames(styles.advertsPage)}>
         <ul>
           {adverts.map((advert) => (
