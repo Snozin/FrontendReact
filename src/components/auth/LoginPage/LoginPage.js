@@ -2,6 +2,8 @@ import { useState } from "react"
 import Button from "../../commons/Button"
 import "./LoginPage.css"
 
+import { login } from "../authDataService"
+
 const LoginPage = () => {
   const [formValues, setFormValues] = useState({ username: "", password: "" })
   // const [username, setUsername] = useState("")
@@ -41,10 +43,18 @@ const LoginPage = () => {
     }))
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    // console.log(event)
+    login(formValues)
+  }
+ 
   return (
     <div className="loginPage">
       <h1 className="loginPage-title">Login molón</h1>
-      <form>
+      <form
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           name="username"
