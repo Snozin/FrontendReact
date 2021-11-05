@@ -1,4 +1,7 @@
-import client, { setAuthorizationHeader } from "../../api/client"
+import client, {
+  removeAuthorizationHeader,
+  setAuthorizationHeader,
+} from "../../api/client"
 import storage from "../../utils/storage"
 
 export const login = (credentials) => {
@@ -9,6 +12,13 @@ export const login = (credentials) => {
    */
   return client.post("/auth/login", credentials).then(({ accessToken }) => {
     setAuthorizationHeader(accessToken)
-    storage.set('auth_token', accessToken)
+    storage.set("auth_token", accessToken)
   })
 }
+
+export const logout = () =>
+// Eliminar la cabecera de las peticiones y borrar el local storage
+  Promise.resolve().then(() => {
+    removeAuthorizationHeader()
+    storage.remove('auth_token')
+  })
