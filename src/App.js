@@ -5,7 +5,7 @@ import {
   AdvertDetailPage,
   NewAdvertPage,
 } from "./components/adverts/"
-import { LoginPage } from "./components/auth"
+import { LoginPage, PrivateRoute } from "./components/auth"
 import { logout } from "./components/auth/authDataService"
 
 import { AuthContextProvider } from "./components/auth/context"
@@ -28,13 +28,13 @@ function App({ isInitiallyLogged }) {
       <AuthContextProvider value={{ handleLogin, handleLogout, isLogged }}>
         <>
           <Routes>
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/login" element={ isLogged ? <Navigate to='/ads'/> : <LoginPage />} />
             <Route path="/ads" element={<AdvertsPage />} />
             <Route
               path="/ads/:advertId"
               element={<AdvertDetailPage cosa={3} />}
             />
-            <Route path="/ads/new" element={<NewAdvertPage />} />
+            <PrivateRoute path="/ads/new" element={<NewAdvertPage />} />
             <Route path="/" element={<Navigate to="/ads" />} />
 
             {/* Esta ruta especial solo hace match cuando nada más lo hace */}

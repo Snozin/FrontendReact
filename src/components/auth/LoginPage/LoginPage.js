@@ -4,6 +4,7 @@ import "./LoginPage.css"
 
 import { login } from "../authDataService"
 import { AuthContextConsumer } from "../context"
+import { useNavigate } from "react-router"
 
 const LoginPage = ({ onLogin }) => {
   const [formValues, setFormValues] = useState({ username: "", password: "" })
@@ -14,6 +15,8 @@ const LoginPage = ({ onLogin }) => {
   const resetError = () => setError(null)
 
   const [isLoading, setIsLoading] = useState(false)
+
+  const navigate = useNavigate()
 
   /**
    * Refactor para utilizar un único useState con un objeto que gestiona los
@@ -57,6 +60,8 @@ const LoginPage = ({ onLogin }) => {
       await login(formValues)
       setIsLoading(false)
       onLogin()
+      // Redirige, pero el onLogin lo hace previamente y no hace nada
+      navigate('/')
     } catch (error) {
       setIsLoading(false)
       setError(error)
