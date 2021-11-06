@@ -30,8 +30,11 @@ function App({ isInitiallyLogged }) {
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/ads" element={<AdvertsPage />} />
+            <Route
+              path="/ads/:advertId"
+              element={<AdvertDetailPage cosa={3} />}
+            />
             <Route path="/ads/new" element={<NewAdvertPage />} />
-            <Route path="/ads/:advertId" element={<AdvertDetailPage cosa={3424}/>} />
             <Route path="/" element={<Navigate to="/ads" />} />
 
             {/* Esta ruta especial solo hace match cuando nada más lo hace */}

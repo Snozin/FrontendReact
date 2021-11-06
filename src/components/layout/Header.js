@@ -7,6 +7,7 @@ import { useContext } from "react"
 import "./Header.css"
 
 import AuthContext from "../auth/context"
+import { Link } from "react-router-dom"
 
 const Header = ({ className }) => {
   // Ejemplo de uso del context consumer
@@ -14,8 +15,10 @@ const Header = ({ className }) => {
   return (
     <header className={classNames("header", className)}>
       <div className="header-logo">
-        {/* Uso del SVG importado */}
-        <Icon width="32" height="32" />
+        <Link to="/">
+          {/* Uso del SVG importado */}
+          <Icon width="32" height="32" />
+        </Link>
       </div>
       <nav className="header-nav">
         {isLogged ? (
@@ -23,7 +26,12 @@ const Header = ({ className }) => {
             Log Out
           </Button>
         ) : (
-          <Button variant="primary" className="header-button">
+          <Button
+            variant="primary"
+            className="header-button"
+            as={Link}
+            to="/login"
+          >
             Log in
           </Button>
         )}
