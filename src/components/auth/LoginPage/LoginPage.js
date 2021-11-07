@@ -4,7 +4,7 @@ import "./LoginPage.css"
 
 import { login } from "../authDataService"
 import { AuthContextConsumer } from "../context"
-import { useNavigate } from "react-router"
+import { useLocation, useNavigate } from "react-router"
 
 const LoginPage = ({ onLogin }) => {
   const [formValues, setFormValues] = useState({ username: "", password: "" })
@@ -51,6 +51,8 @@ const LoginPage = ({ onLogin }) => {
       [event.target.name]: event.target.value,
     }))
   }
+  const location = useLocation()
+  const from = location.state?.from?.pathname || "/"
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -61,7 +63,7 @@ const LoginPage = ({ onLogin }) => {
       setIsLoading(false)
       onLogin()
       // Redirige, pero el onLogin lo hace previamente y no hace nada
-      navigate('/')
+      navigate(from, { replace: true })
     } catch (error) {
       setIsLoading(false)
       setError(error)

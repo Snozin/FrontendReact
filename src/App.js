@@ -5,7 +5,7 @@ import {
   AdvertDetailPage,
   NewAdvertPage,
 } from "./components/adverts/"
-import { LoginPage } from "./components/auth"
+import { LoginPage, RequireAuth } from "./components/auth"
 import { logout } from "./components/auth/authDataService"
 
 import { AuthContextProvider } from "./components/auth/context"
@@ -30,7 +30,8 @@ function App({ isInitiallyLogged }) {
           <Routes>
             <Route
               path="/login"
-              element={isLogged ? <Navigate to="/ads" /> : <LoginPage />}
+              // element={isLogged ? <Navigate to="/ads" /> : <LoginPage />}
+              element={<LoginPage />}
             />
             <Route path="/ads" element={<AdvertsPage />} />
             <Route
@@ -39,7 +40,11 @@ function App({ isInitiallyLogged }) {
             />
             <Route
               path="/ads/new"
-              element={isLogged ? <NewAdvertPage /> : <Navigate to="/login" />}
+              element={
+                <RequireAuth>
+                  <NewAdvertPage />
+                </RequireAuth>
+              }
             />
             <Route path="/" element={<Navigate to="/ads" />} />
 
